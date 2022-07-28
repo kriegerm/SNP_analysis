@@ -1,0 +1,147 @@
+#Retrieve all the data from the site
+
+http://slimsdata.genomecenter.ucdavis.edu/Data/cztn7yhgju/Un_DTSA527/Project_JMZZ_Nova583P_Zou/
+
+How did I do this? Used some command line thing to just download all the files.
+
+Use gunzip to unzip all the files, then run fastqc to take a look at the quality of the reads.
+The R2 reads look shitty! A lot of them fall below 28 for the majority of the read. I guess I will adjust my Trimmomatic parameters from my usually strict ones and see what I get.
+
+Adapters.fa - Got this from Rahul, I’m not 100% sure this is the right file. I need to investigate this and maybe update it. It seems like for IlluminaClip you need really specific names for your adapters, so I don’t want to totally mess with it because I don’t understand that yet.
+Adapters_v2.fa
+>TruSeq3_IndexedAdapter
+GATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+>TruSeq3_UniversalAdapter
+GATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA
+>PrefixPE/1
+TACACTCTTTCCCTACACGACGCTCTTCCGATCT
+>PrefixPE/2
+GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT
+>PE1_rc
+AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA
+>PE2_rc
+AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+>PrefixNX/1
+AGATGTGTATAAGAGACAG
+>PrefixNX/2
+AGATGTGTATAAGAGACAG
+>Trans1
+TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG
+>Trans1_rc
+CTGTCTCTTATACACATCTGACGCTGCCGACGA
+>Trans2
+GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG
+>Trans2_rc
+CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
+>TruSeq_Universal_Adapter
+AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
+>TruSeq_Adapter_Index_1
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_2
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATGTATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_3
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACTTAGGCATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_4
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACTGACCAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_5
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACACAGTGATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_6
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGCCAATATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_7
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACCAGATCATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_8
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTTGAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_9
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGATCAGATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_10_
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACTAGCTTATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_11_
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGCTACATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_12_
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACCTTGTAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_13_
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTCAACAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_14
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACAGTTCCGTATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_15
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGTCAGAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_16
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACCCGTCCCGATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_18
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTCCGCACATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_19
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGAAACGATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_20
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTGGCCTTATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_21
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGTTTCGGAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_22
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTACGTAATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_23
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_25
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG
+>TruSeq_Adapter_Index_27
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTTTATCTCGTATGCCGTCTTCTGCTTG
+>Multiplexing Adapters
+GATCGGAAGAGCACACGTCT
+ACACTCTTTCCCTACACGACGCTCTTCCGATCT
+>Multiplexing PCR Primer 1.0
+AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
+>Multiplexing PCR Primer 2.0
+GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT
+>Multiplexing Read 1 Sequencing Primer
+ACACTCTTTCCCTACACGACGCTCTTCCGATCT
+>Multiplexing Index Read Sequencing Primer
+GATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+>Multiplexing Read 2 Sequencing Primer
+GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT
+
+Trimmomatic shell script:
+
+#!/usr/bin/env bash
+
+##################################################
+#Shell script for trimming many files in a directory using trimmomatic
+################################################
+
+#This is going to make an array of all the sample names in the current directory. You can modify this if the sample names are different.
+arr=()
+for entry in "*.fastq"
+do
+  Name=$(echo ${entry} | sed 's/_L001_R[1 2]_001.fastq//g');
+  arr+=($Name)
+done
+
+#Makes an array of unique values of sample identifiers
+uniqs_arr=($(for ip in "${arr[@]}"; do echo "${ip}"; done | sort -u))
+len_uniqs_arr=${#uniqs_arr[@]};
+
+#For each unique sample, we will use trimmomatic to produce output.
+COUNTER=0
+for value in "${uniqs_arr[@]}"
+do
+  let COUNTER=COUNTER+1;
+  echo "Trimming reads for sample "$value;
+  echo "Progress: " $COUNTER "out of" $len_uniqs_arr" total samples";
+
+  trimmomatic PE -threads 4 -phred33 $value"_L001_R1_001.fastq" $value"_L001_R2_001.fastq" \
+  $value"_R1_paired.fastq" $value"_R1_orphan.fastq" \
+  $value"_R2_paired.fastq" $value"_R2_orphan.fastq" \
+  ILLUMINACLIP:Adapters.fa:2:30:10 SLIDINGWINDOW:5:25 LEADING:20 TRAILING:20 MINLEN:50 \
+  2>>trimmomaticlog.txt;
+done
+
+
+
+Next I had to move to exacloud, where I could have just done all the trimmomatic stuff to begin with but oh well.
+
+
+scp Trimmomatic_paired/* kriegema@exahead1.ohsu.edu:/home/exacloud/gscratch/MerritLab/ZZ_SNP_3.22
+
+For some reason the .gb file isn't working, it gives me an error. Maybe because it originally came from snap gene? I really don't know, the text file looks fine.
+snippy --outdir snippyoutput --ref 159-comX-renG-erm.gb pZX9-comR.gb  --R1 RA10_S31_R1_paired.fastq --R2 RA10_S31_R2_paired.fastq
+
+
+snippy --outdir OUT2 --ref 159-ssb2-gusA-erm.gbk --R1 RA10_S31_R1_paired.fastq --R2 RA10_S31_R2_paired.fastq 
+
